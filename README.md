@@ -1,5 +1,6 @@
 # yywiki
 [양디위키](yywiki.lunab.xyz)  
+http://yywiki.lunab.xyz.  
 고3초 수능공부를 시작하기전 너무 슬픈나머지 만들었다.
 
 ```
