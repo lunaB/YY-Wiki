@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xyz.lunab.yywiki.mapper.UserMapper">
+
+	<!-- User VO resultMap -->
+	<resultMap id="userMap" type="xyz.lunab.yywiki.domain.UserVO">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="pass" column="pass"/>
+		<result property="role" column="role"/>
+		<result property="regdate" column="regdate"/>
+	</resultMap>
+	
+	<!-- selectUser -->
+	<select id="selectUserId" resultType="xyz.lunab.yywiki.domain.UserVO">
+		SELECT *
+		FROM user
+		WHERE id = #{id}
+	</select>
+	
+	<!-- insertUser -->
+	<insert id="insertUser">
+		INSERT
+		INTO user (id, name, pass, role, regdate)
+		VALUES (#{id}, #{name}, #{pass}, #{role}, CURRENT_TIMESTAMP)
+	</insert>
+	
+</mapper>

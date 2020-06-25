@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<http auto-config="true" use-expressions="true">
+		
+		<intercept-url pattern="/manage/**" access="hasRole('ROLE_STAFF') or hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/resources/**" access="permitAll"/>
+		<intercept-url pattern="/**" access="permitAll" />
+		<!--  <intercept-url pattern="/write" access="authenticated" /> -->
+		
+		<form-login login-page="/auth/login"
+			default-target-url="/?loginSucceed"
+			login-processing-url="/auth/loginProcess"
+			username-parameter="user_id"
+			password-parameter="user_pw"
+			always-use-default-target="true"
+			authentication-failure-url="/auth/login?loginFailed"/>
+			
+			<logout invalidate-session="true"
+				logout-url="/auth/logout"
+				logout-success-url="/?logoutSucceed"/>
+				
+			<access-denied-handler error-page="/auth/error"/>
+			
+		<csrf/>
+	</http>
+	
+	<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<beans:constructor-arg name="strength" value="256"></beans:constructor-arg>
+	</beans:bean>
+	
+	<authentication-manager>
+		<authentication-provider user-service-ref="authServiceBean">
+			<password-encoder ref="passwordEncoder" />
+		</authentication-provider>
+	</authentication-manager>
+	
+	<beans:bean id="authServiceBean" class="xyz.lunab.yywiki.sequrity.service.UserDetailsServiceImpl">
+		<beans:constructor-arg name="sqlSession" ref="sqlSession" />
+	</beans:bean>
+	
+	<!-- 
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="user" password="1234" authorities="ROLE_USER" />
+				<user name="admin" password="1234" authorities="ROLE_ADMIN"></user>
+			</user-service>
+		</authentication-provider>
+	</authentication-manager> 
+	-->
+	
+</beans:beans>

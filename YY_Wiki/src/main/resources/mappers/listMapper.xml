@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="xyz.lunab.yywiki.mapper.ListMapper">
+
+	<!-- Wiki VO resultMap -->
+	<resultMap type="xyz.lunab.yywiki.domain.WikiVO" id="wikiMap">
+		<result property="wiki_id" column="wiki_id"/>
+		<result property="title" column="title"/>
+		<result property="permission_id" column="permission_id"/>
+	</resultMap>
+	
+	<!-- resultMap -->
+	<resultMap type="xyz.lunab.yywiki.domain.WikiContentVO" id="wikiContentMap">
+		<result property="wiki_id" column="wiki_id"/>
+		<result property="content" column="content"/>
+		<result property="user_id" column="user_id"/>
+		<result property="user_ip" column="user_ip"/>
+		<result property="summary" column="summary"/>
+		<result property="regdate" column="regdate"/>
+	</resultMap>
+	
+	<!-- select user name -->
+	<select id="selectListByUserName" resultType="xyz.lunab.yywiki.dto.WikiHeadDTO">
+		SELECT 
+		w.title "title", c1.regdate "regdate", COUNT(*) "count"
+		FROM 
+		wiki w, wiki_content c1, wiki_content c2
+		WHERE 
+		w.wiki_id = c1.wiki_id 
+		AND
+		w.wiki_id = c2.wiki_id
+		GROUP BY w.title, c1.regdate HAVING c1.regdate = max(c2.regdate)
+		ORDER BY c1.regdate DESC
+		LIMIT 5
+	</select>
+	
+</mapper>
