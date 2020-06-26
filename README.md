@@ -1,4 +1,4 @@
-# yywiki
+# 양디위키 - 양영디지털고등학교 위키
 [양디위키](yywiki.lunab.xyz)  
 http://yywiki.lunab.xyz  
 고등학교 3학년 초기 갑작스럽게 수능공부해야만 하게 된 나영채는 수능공부를 시작하기전 너무 슬픈나머지 만들었다.  
@@ -9,6 +9,13 @@ http://yywiki.lunab.xyz
 회사에서 졸업 후 대학원까지 보내준다 했지만 자신은 쉬운 길은 택하지 않겠다며 그만둬 버렸다.
 ```
 -yywiki-
+
+## Project
+- JDK 1.8
+- Java 1.8
+- Spring MVC 4.3.10
+- Spring Sequrity 4.2.1
+- Tomcat 8.5 ~ 9.0
 
 ## BETA
 <img src="/doc/a.PNG">
