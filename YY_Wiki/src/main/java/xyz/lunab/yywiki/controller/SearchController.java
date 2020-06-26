@@ -1,6 +1,5 @@
 package xyz.lunab.yywiki.controller;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import javax.inject.Inject;
@@ -13,9 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import xyz.lunab.yywiki.reCaptcha.VerifyRecaptchaInvisible;
 import xyz.lunab.yywiki.service.WikiService;
 import xyz.lunab.yywiki.util.UrlUtil;
 

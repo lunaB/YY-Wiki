@@ -1,7 +1,6 @@
 package xyz.lunab.yywiki.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

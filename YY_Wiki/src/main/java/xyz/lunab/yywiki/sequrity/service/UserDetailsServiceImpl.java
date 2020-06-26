@@ -35,6 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		role.add(new SimpleGrantedAuthority(vo.getRole()));
 		
 		UserDetails user = new User(id, vo.getPass(), role);
+		
 		// http://niees.tistory.com/18
 		return new UserDetailsVO(vo.getId(), vo.getPass(), true, true, true, true, role, vo.getName());
 	}

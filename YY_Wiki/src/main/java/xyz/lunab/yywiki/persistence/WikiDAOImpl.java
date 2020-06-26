@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import xyz.lunab.yywiki.domain.WikiContentVO;
 import xyz.lunab.yywiki.domain.WikiVO;
 import xyz.lunab.yywiki.dto.WikiHeadDTO;
 
